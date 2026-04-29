@@ -19,7 +19,6 @@ const databaseConfig = useConnectionString
       database: process.env.PGDATABASE || process.env.DB_NAME,
       user: process.env.PGUSER || process.env.DB_USER || "postgres",
       password: process.env.PGPASSWORD || process.env.DB_PASSWORD || "Aman",
-      ssl: isProduction ? { rejectUnauthorized: false } : false,
     };
 
 const database = new Pool(databaseConfig);
