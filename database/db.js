@@ -7,7 +7,6 @@ const useConnectionString =
   Boolean(connectionString) &&
   /^postgres(?:ql)?:\/\//i.test(connectionString);
 const isProduction = process.env.NODE_ENV === "production";
-
 const databaseConfig = useConnectionString
   ? {
       connectionString,
@@ -20,9 +19,7 @@ const databaseConfig = useConnectionString
       user: process.env.PGUSER || process.env.DB_USER || "postgres",
       password: process.env.PGPASSWORD || process.env.DB_PASSWORD || "Aman",
     };
-
 const database = new Pool(databaseConfig);
-
 try {
   await database.query("SELECT 1");
   console.log("Connected to the database successfully");

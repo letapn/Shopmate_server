@@ -12,9 +12,7 @@ export const getAllUsers = catchAsyncErrors(async (req, res, next) => {
   );
 
   const totalUsers = parseInt(totalUsersResult.rows[0].count);
-
   const offset = (page - 1) * 10;
-
   const users = await database.query(
     "SELECT * FROM users WHERE role = $1 ORDER BY created_at DESC LIMIT $2 OFFSET $3",
     ["User", 10, offset]
